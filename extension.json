@@ -4,5 +4,9 @@
   "organization": "Charlie Welsh",
   "description": "C++ Language definition for Nova.",
   "version": "1.0",
-  "categories": ["languages"]
+  "categories": ["languages"],
+  "repository": "https://github.com/tetraoxygen/Nova-CPP",
+  "bugs": {
+    "email": "mailto:charlie@allotrope.xyz"
+  }
 }
