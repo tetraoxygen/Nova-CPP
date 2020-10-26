@@ -6,6 +6,7 @@
   "version": "1.0",
   "categories": ["languages"],
   "repository": "https://github.com/tetraoxygen/Nova-CPP",
+  "license": "MPL-2.0",
   "bugs": {
     "email": "mailto:charlie@allotrope.xyz"
   }
