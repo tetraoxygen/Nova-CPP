@@ -1,0 +1,8 @@
+{
+  "identifier": "com.cwelsh.cpp",
+  "name": "C++",
+  "organization": "Charlie Welsh",
+  "description": "C++ Language definition for Nova.",
+  "version": "1.0",
+  "categories": ["languages"]
+}
