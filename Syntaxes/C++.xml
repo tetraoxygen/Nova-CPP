@@ -61,11 +61,10 @@
     </scopes>
 	<collections>
 		<!-- Include -->
-		<!-- Doesn't work for some reason. Can't figure out why, but if this part is included, then C++ doesn't show up as an option in the languages menu. 
 		<collection name="include">
 			<scope name="cpp.include">
 				<starts-with>
-					<expression>(#include)\s([<|"][A-Za-z0-9._]*[>|"])</expression>
+					<expression>(\#include)\s+([&lt;|"][A-Za-z0-9._]*[&gt;|"])</expression>
 					<capture number="1" name="cpp.processing" />
 					<capture number="2" name="cpp.identifier.package" />
 				</starts-with>
@@ -74,7 +73,7 @@
 				</ends-with>
 			</scope>
 		</collection>
-	-->
+	
 		
 		<!-- Comments -->
 		<collection name="comments">
