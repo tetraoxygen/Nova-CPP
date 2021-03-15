@@ -1,3 +1,7 @@
+## Version 1.2
+
+Fixed a bug in the `#include` support.
+
 ## Version 1.1
 
 Enabled functional `#include` support.

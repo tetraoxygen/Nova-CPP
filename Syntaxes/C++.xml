@@ -64,7 +64,7 @@
 		<collection name="include">
 			<scope name="cpp.include">
 				<starts-with>
-					<expression>(\#include)\s+([&lt;|"][A-Za-z0-9._]*[&gt;|"])</expression>
+					<expression>(\#include)\s+([&lt;|"]*[A-Za-z0-9._]*[&gt;|"]*)</expression>
 					<capture number="1" name="cpp.processing" />
 					<capture number="2" name="cpp.identifier.package" />
 				</starts-with>
