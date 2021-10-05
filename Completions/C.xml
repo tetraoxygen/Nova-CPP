@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <completions>
     <provider>
-        <selector>cpp</selector>
+        <selector>c</selector>
         <expression>\b[a-zA-Z0-9-_]*</expression>
-        <set>cpp.entities</set>
+        <set>c.entities</set>
     </provider>
     
     <!-- Entities -->
-    <set name="cpp.entities">
+    <set name="c.entities">
         <completion string="&quot;" />
         <completion string="&amp;" />
         <completion string="&apos;" />

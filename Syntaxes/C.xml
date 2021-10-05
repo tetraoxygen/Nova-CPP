@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<syntax name="cpp">
+<syntax name="c">
     <meta>
-        <name>C++</name>
+        <name>C</name>
         <type>compiled</type>
-        <preferred-file-extension>cpp</preferred-file-extension>
+        <preferred-file-extension>c</preferred-file-extension>
     </meta>
     
     <detectors>
-        <extension priority="1.0">cpp,cxx,cc,c++,h,hpp,hh,h++,hxx</extension>
+        <extension priority="1.0">c,h</extension>
     </detectors>
     
     <indentation>
@@ -62,11 +62,11 @@
 	<collections>
 		<!-- Include -->
 		<collection name="include">
-			<scope name="cpp.include">
+			<scope name="c.include">
 				<starts-with>
 					<expression>(\#include)\s+([&lt;|"]*[A-Za-z0-9._]*[&gt;|"]*)</expression>
-					<capture number="1" name="cpp.processing" />
-					<capture number="2" name="cpp.identifier.package" />
+					<capture number="1" name="c.processing" />
+					<capture number="2" name="c.identifier.package" />
 				</starts-with>
 				<ends-with>
 					<expression>$</expression>
@@ -77,15 +77,15 @@
 		
 		<!-- Comments -->
 		<collection name="comments">
-			<scope name="cpp.comment.single.shebang">
+			<scope name="c.comment.single.shebang">
 				<expression>^\#!(.*)$</expression>
-				<capture number="1" name="cpp.comment.content" />
+				<capture number="1" name="c.comment.content" />
 			</scope>
-			<scope name="cpp.comment.single" spell-check="true">
+			<scope name="c.comment.single" spell-check="true">
 				<expression>\/\/(.*)$</expression>
-				<capture number="1" name="cpp.comment.content" />
+				<capture number="1" name="c.comment.content" />
 			</scope>
-			<scope name="cpp.comment.block" spell-check="true">
+			<scope name="c.comment.block" spell-check="true">
 				<symbol type="comment">
 					<context behavior="subtree" />
 				</symbol>
@@ -100,12 +100,12 @@
 		
 		<!-- Variable -->
 		<collection name="variable">
-			<scope name="cpp.definition.variable">
+			<scope name="c.definition.variable">
 				<symbol type="variable" scope="local" />
 				<starts-with>
 					<expression>\b(bool|char|int|float|double|void|wchar_t)\s+([a-zA-Z_][A-Za-z0-9_]*)\b</expression>
-					<capture number="1" name="cpp.keyword.let" />
-					<capture number="2" name="cpp.identifier.name" />
+					<capture number="1" name="c.keyword.let" />
+					<capture number="2" name="c.identifier.name" />
 				</starts-with>
 				<ends-with>
 					<expression>\=|;</expression>
@@ -114,10 +114,10 @@
 					<cut-off>
 						<expression>(?=\b(?:public|private|protected|function|class|if|else|while|for)\b)</expression>
 					</cut-off>
-					<scope name="cpp.constant.type">
+					<scope name="c.constant.type">
 						<starts-with>
 							<expression>\:</expression>
-							<capture number="0" name="cpp.operator" />
+							<capture number="0" name="c.operator" />
 						</starts-with>
 						<ends-with>
 							<expression>(?=\=|\;)</expression>
@@ -136,54 +136,54 @@
 		
 		<!-- Strings -->
 		<collection name="strings">
-			<scope name="cpp.string.double-quoted">
+			<scope name="c.string.double-quoted">
 				<starts-with>
 					<expression>&quot;</expression>
-					<capture number="0" name="cpp.string.double-quoted.delimiter" />
+					<capture number="0" name="c.string.double-quoted.delimiter" />
 				</starts-with>
 				<ends-with>
 					<expression>&quot;|(?:(?&lt;!\\)$)</expression>
-					<capture number="0" name="cpp.string.double-quoted.delimiter" />
+					<capture number="0" name="c.string.double-quoted.delimiter" />
 				</ends-with>
 				<subscopes>
-					<scope name="cpp.string.double-quoted.escape">
+					<scope name="c.string.double-quoted.escape">
 						<expression>\\(?:\\|&apos;|&quot;|n|r|t|b|f)</expression>
 					</scope>
 				</subscopes>
 			</scope>
-			<scope name="cpp.string.single-quoted">
+			<scope name="c.string.single-quoted">
 				<starts-with>
 					<expression>&apos;</expression>
-					<capture number="0" name="cpp.string.single-quoted.delimiter" />
+					<capture number="0" name="c.string.single-quoted.delimiter" />
 				</starts-with>
 				<ends-with>
 					<expression>&apos;|(?:(?&lt;!\\)$)</expression>
-					<capture number="0" name="cpp.string.single-quoted.delimiter" />
+					<capture number="0" name="c.string.single-quoted.delimiter" />
 				</ends-with>
 				<subscopes>
-					<scope name="cpp.string.single-quoted.escape">
+					<scope name="c.string.single-quoted.escape">
 						<expression>\\(?:\\|&apos;|&quot;|n|r|t|b|f)</expression>
 					</scope>
 				</subscopes>
 			</scope>
-			<scope name="cpp.string.regex">
+			<scope name="c.string.regex">
 				<expression>/(?!\s)(?:[^/\\]|\\.)*/</expression>
 			</scope>
 		</collection>
 		
 		<!-- Function Blocks -->
 		<collection name="function-blocks">
-			<scope name="cpp.block">
+			<scope name="c.block">
 				<symbol type="block">
 					<context behavior="subtree" fold-type="function" />
 				</symbol>
 				<starts-with>
 					<expression>\{</expression>
-					<capture number="0" name="cpp.bracket" />
+					<capture number="0" name="c.bracket" />
 				</starts-with>
 				<ends-with>
 					<expression>\}</expression>
-					<capture number="0" name="cpp.bracket" />
+					<capture number="0" name="c.bracket" />
 				</ends-with>
 				<subscopes>
 					<include syntax="self" />
@@ -193,99 +193,55 @@
 		
 		<!--Keywords-->
 		<collection name="keywords">
-			<scope name="cpp.keyword">
+			<scope name="c.keyword">
 				<strings>
-					<string>alignof</string>
-					<string>and</string>
-					<string>and_eq</string>
-					<string>asm</string>
 					<string>auto</string>
-					<string>bitand</string>
-					<string>bitor</string>
-					<string>bool</string>
 					<string>break</string>
 					<string>case</string>
-					<string>catch</string>
 					<string>char</string>
-					<string>char8_t</string>
-					<string>char16_t</string>
-					<string>char32_t</string>
-					<string>class</string>
-					<string>compl</string>
-					<string>concept</string>
 					<string>const</string>
-					<string>const_cast</string>
-					<string>consteval</string>
-					<string>constexpr</string>
-					<string>constinit</string>
 					<string>continue</string>
-					<string>co_await</string>
-					<string>co_return</string>
-					<string>co_yield</string>
-					<string>decltype</string>
 					<string>default</string>
-					<string>delete</string>
 					<string>do</string>
 					<string>double</string>
-					<string>dynamic_cast</string>
 					<string>else</string>
 					<string>enum</string>
-					<string>explicit</string>
-					<string>export</string>
 					<string>extern</string>
-					<string>false</string>
 					<string>float</string>
 					<string>for</string>
-					<string>friend</string>
 					<string>goto</string>
 					<string>if</string>
 					<string>inline</string>
 					<string>int</string>
 					<string>long</string>
-					<string>mutable</string>
-					<string>namespace</string>
-					<string>new</string>
-					<string>noexcept</string>
-					<string>not</string>
-					<string>not_eq</string>
-					<string>nullptr</string>
-					<string>operator</string>
-					<string>or</string>
-					<string>or_eq</string>
-					<string>private</string>
-					<string>protected</string>
-					<string>public</string>
-					<string>register reinterpret_cast</string>
-					<string>requires</string>
+					<string>register</string>
+					<string>restrict</string>
 					<string>return</string>
 					<string>short</string>
 					<string>signed</string>
 					<string>sizeof</string>
 					<string>static</string>
-					<string>static_assert</string>
-					<string>static_cast</string>
 					<string>struct</string>
 					<string>switch</string>
-					<string>template</string>
-					<string>this</string>
-					<string>thread_local</string>
-					<string>throw</string>
-					<string>true</string>
-					<string>try</string>
 					<string>typedef</string>
-					<string>typeid</string>
-					<string>typename</string>
 					<string>union</string>
 					<string>unsigned</string>
-					<string>using declaration</string>
-					<string>using directive</string>
-					<string>virtual</string>
 					<string>void</string>
 					<string>volatile</string>
-					<string>wchar_t</string>
 					<string>while</string>
-					<string>xor</string>
-					<string>xor_eq</string>
+					<string>_Alignas</string>
+					<string>_Alignof</string>
+					<string>_Atomic</string>
+					<string>_Bool</string>
+					<string>_Complex</string>
+					<string>_Decimal128</string>
+					<string>_Decimal32</string>
+					<string>_Decimal64</string>
+					<string>_Generic</string>
+					<string>_Imaginary</string>
+					<string>_Noreturn</string>
+					<string>_Static_assert</string>
+					<string>_Thread_local</string>
 				</strings>
 			</scope>
 		</collection>
@@ -293,7 +249,7 @@
 		<!-- Values -->
 		<collection name="values">
 			<include syntax="self" collection="strings" />
-			<scope name="cpp.value.null">
+			<scope name="c.value.null">
 				<strings>
 					<string>null</string>
 					<string>undefined</string>
@@ -301,44 +257,44 @@
 					<string>Infinity</string>
 				</strings>
 			</scope>
-			<scope name="cpp.value.boolean">
+			<scope name="c.value.boolean">
 				<strings>
 					<string>true</string>
 					<string>false</string>
 				</strings>
 			</scope>
-			<scope name="cpp.value.number.hex">
+			<scope name="c.value.number.hex">
 				<expression>\b0x[a-fA-F0-9]+\b</expression>
 			</scope>
-			<scope name="cpp.value.number">
+			<scope name="c.value.number">
 				<expression>\b\-?(?:\d+(?:\.\d*)?|(?:\.\d+))\b</expression>
 			</scope>
 		</collection>
 		
 		<!-- Syntax -->
 		<collection name="syntax">
-			<scope name="cpp.bracket.block.start">
+			<scope name="c.bracket.block.start">
 				<symbol type="block">
 					<context behavior="start" />
 				</symbol>
 				<expression>\{</expression>
 			</scope>
-			<scope name="cpp.bracket.block.end">
+			<scope name="c.bracket.block.end">
 				<symbol type="block">
 					<context behavior="end" />
 				</symbol>
 				<expression>\}</expression>
 			</scope>
-			<scope name="cpp.bracket">
+			<scope name="c.bracket">
 				<expression>[\(\[\)\]]</expression>
 			</scope>
-			<scope name="cpp.operator">
+			<scope name="c.operator">
 				<expression>(\+|\-|\*|/|%|\+\+|\-\-|\=|\=\=|!\=|\+\=|\-\=|\*\=|/\=|%\=|\&lt;|\&gt;|\&lt;\=|\&gt;=|\=\=\=|!\=\=|&amp;&amp;|\||\|\||!|\^|&amp;|\&lt;\&lt;|\&gt;\&gt;|~)</expression>
 			</scope>
-			<scope name="cpp.comma">
+			<scope name="c.comma">
 				<expression>,</expression>
 			</scope>
-			<scope name="cpp.semicolon">
+			<scope name="c.semicolon">
 				<expression>;</expression>
 			</scope>
 		</collection>

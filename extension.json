@@ -9,5 +9,53 @@
   "license": "MPL-2.0",
   "bugs": {
     "email": "mailto:charlie@allotrope.xyz"
-  }
+  },
+  
+  "main": "main.js",
+
+  "entitlements": {
+    "process": true,
+    "filesystem": "readonly"
+  },
+
+  "config": [
+    {
+      "key": "bb.clangd-path",
+      "title": "clangd Path",
+      "type": "path",
+      "placeholder": "/usr/local/bin/clangd"
+    },
+    {
+      "key": "bb.clangd-cc-path",
+      "title": "Path to compile-commands.json directory",
+      "type": "path",
+      "allowFolders": true,
+      "allowFiles": false,
+      "placeholder": "Project Folder"
+    }
+  ],
+
+  "configWorkspace": [
+    {
+      "key": "bb.clangd-cc-path",
+      "title": "Path to compile-commands.json directory",
+      "type": "path",
+      "allowFolders": true,
+      "allowFiles": false,
+      "placeholder": "Global Default"
+    }
+  ],
+
+  "activationEvents": [
+    "onLanguage:c",
+    "onLanguage:cc",
+    "onLanguage:cpp",
+    "onLanguage:cxx",
+    "onLanguage:c++",
+    "onLanguage:h",
+    "onLanguage:hh",
+    "onLanguage:hpp",
+    "onLanguage:hxx",
+    "onLanguage:h++"
+  ]
 }
